@@ -1,0 +1,17 @@
+{
+  "name": "flowboxx-plugins",
+  "description": "Community plugins by flowboxx. Not affiliated with Anthropic.",
+  "owner": {
+    "name": "flowboxx",
+    "url": "https://github.com/flowboxx"
+  },
+  "plugins": [
+    {
+      "name": "guardrails-for-agents",
+      "source": "./",
+      "description": "Seven deterministic safety hooks for coding agents (destructive rm, sudo, secrets, protected files, time, browser tabs, agent spawning).",
+      "category": "safety",
+      "tags": ["hooks", "guardrails", "safety", "secrets"]
+    }
+  ]
+}

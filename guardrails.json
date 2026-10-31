@@ -1,0 +1,5 @@
+{
+  "_comment": "Shipped defaults. Do not edit here: override in ~/.claude/guardrails.json (user) or <project>/.claude/guardrails.json (project). Run scripts/print-defaults.py to see every key.",
+  "lang": "en",
+  "log_file": null
+}

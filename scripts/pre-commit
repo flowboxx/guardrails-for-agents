@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Git pre-commit hook: refuse a commit whose staged changes contain a secret.
+
+Install (from your repository root):
+    cp /path/to/guardrails-pack/scripts/pre-commit .git/hooks/pre-commit
+    chmod +x .git/hooks/pre-commit
+
+Or point the hook at the plugin instead of copying it, so updates flow through:
+    printf '#!/bin/sh\nexec python3 "%s/scripts/pre-commit" "$@"\n' "/path/to/guardrails-pack" > .git/hooks/pre-commit
+
+Uses the same patterns and config as the secret-scan hook (no dependencies).
+"""
+import os
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve()
+for candidate in (HERE.parent.parent / "hooks", Path(os.environ.get("GUARDRAILS_HOOKS_DIR", ""))):
+    if candidate and (candidate / "secret_scan.py").is_file():
+        sys.path.insert(0, str(candidate))
+        break
+else:
+    print("pre-commit: secret_scan.py not found; set GUARDRAILS_HOOKS_DIR", file=sys.stderr)
+    sys.exit(0)
+
+import _lib as lib  # noqa: E402
+import secret_scan  # noqa: E402
+
+
+def main():
+    cfg = lib.load_config({"cwd": os.getcwd()})
+    hcfg = lib.hook_config(cfg, secret_scan.HOOK, secret_scan.DEFAULTS)
+    findings = secret_scan.scan_diff(secret_scan.staged_diff(os.getcwd()), hcfg)
+    if not findings:
+        return 0
+    print("pre-commit: possible secrets in staged changes:", file=sys.stderr)
+    for name, where, line, masked in findings:
+        print("  %s in %s line %s (%s)" % (name, where, line, masked), file=sys.stderr)
+    print("Remove them, or add '%s' to the line for a known false alarm." % hcfg.get("allow_marker"), file=sys.stderr)
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
