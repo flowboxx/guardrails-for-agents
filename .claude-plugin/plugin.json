@@ -2,7 +2,8 @@
   "name": "guardrails-for-agents",
   "displayName": "Guardrails for Agents",
   "version": "0.1.0",
-  "description": "Seven deterministic safety hooks for coding agents: no destructive rm, ask before sudo, secret scan, protected files, time check, tab guard, mechanic-or-judgement. Python 3.9+, no dependencies, JSON-configurable.",
+  "description": "Seven deterministic safety hooks for Claude Code: no destructive rm, ask before sudo, secret scan, protected files, time check, tab guard, mechanic-or-judgement. Python 3.9+, no dependencies, JSON-configurable. Community project, not affiliated with Anthropic.",
+  "icon": "./.claude-plugin/icon.png",
   "author": {
     "name": "flowboxx",
     "url": "https://github.com/flowboxx"

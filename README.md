@@ -6,6 +6,9 @@ no model calls. Everything is configurable with one JSON file.
 
 > Community project, **not affiliated with Anthropic**. "Claude" and "Claude Code" are trademarks
 > of their respective owner; this plugin only uses the public hook interface.
+>
+> Status: **beta** (v0.1.0-beta). The hooks are tested against the documented hook protocol;
+> false-alarm rates in daily use are not measured yet. Feedback and issues are welcome.
 
 ## The problem
 

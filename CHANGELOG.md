@@ -5,9 +5,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-10-31
+## [0.1.0-beta] - 2026-10-31
 
-First public version.
+First public version. Beta: the hooks are tested against the documented hook protocol, but
+false-alarm rates in daily use are not measured yet. Feedback welcome.
 
 ### Added
 

@@ -9,7 +9,7 @@
     {
       "name": "guardrails-for-agents",
       "source": "./",
-      "description": "Seven deterministic safety hooks for coding agents (destructive rm, sudo, secrets, protected files, time, browser tabs, agent spawning).",
+      "description": "Seven deterministic safety hooks for Claude Code (destructive rm, sudo, secrets, protected files, time, browser tabs, agent spawning). Beta, feedback welcome.",
       "category": "safety",
       "tags": ["hooks", "guardrails", "safety", "secrets"]
     }
